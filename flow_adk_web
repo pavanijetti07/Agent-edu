@@ -1,0 +1,25 @@
+The typical flow for an ADK-powered application involves a cyclical process driven by user input and orchestrated by the ADK Runtime.
+
+User Input: The user interacts with the application through a web UI (often built using ADK Web, which is a built-in developer UI for fast iteration and debugging). The user sends a query or request.
+
+Runner Activation: The request is received by the ADK Runner, which acts as the main entry point and orchestrator for that specific user query. The Runner manages the overall Event Loop.
+
+Agent Execution: The Runner invokes the designated Root Agent. The Root Agent determines the plan of action, which typically involves:
+
+Reasoning: Using a Large Language Model (LLM) like Gemini to understand the request and decide the next step (e.g., Is this a research task or a calculation?).
+
+Delegation: The Root Agent delegates the task to a specialized Sub-Agent (or multiple sub-agents) as part of a workflow.
+
+Workflow & Tool Use: The specialized agents perform their functions:
+
+Workflow Agents (Sequential, Parallel, Loop) determine how sub-agents run.
+
+LLM Agents use their LLM core to reason and potentially decide to call an External Tool (e.g., a BigQuery tool for data, a Google Search tool for grounding, or a custom Function Tool).
+
+Event Passing: As agents execute, they yield Events (messages) back to the Runner. An Event can represent an agent's thought, a tool call request, a tool result, or a request for a state change.
+
+State Management: The Runner processes these Events, coordinating with Services to commit any necessary state changes (like updating session history or agent memory).
+
+Output Streaming: Events are forwarded upstream, allowing the web UI to display a response, often through built-in streaming capabilities for a human-like, real-time conversation.
+
+User Output: The final synthesized output from the agent workflow is displayed to the user in the web application.
