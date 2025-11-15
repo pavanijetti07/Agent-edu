@@ -11,3 +11,30 @@ Lack of Personalization: Human teachers cannot realistically customize lessons f
 Teacher Overburden: Educators spend too much time on repetitive tasks like routine grading and answering administrative questions, detracting from high-value mentorship and instructional design.
 
 Inconsistent Support: High-quality, real-time tutoring is expensive and inaccessible, creating an equity gap.
+
+
+
+Problem Statement
+A well-formulated Problem Statement typically answers four main questions:
+
+1. The Ideal State (The "Should Be")
+  What should be happening?
+  What is the ideal outcome?
+
+2. The Reality (The "Is")
+  What is the current, undesirable reality?
+  What is the specific deviation from the ideal?
+
+3. The Consequences (The "Impact")
+What are the measurable negative effects (financial, time, quality, customer satisfaction)?
+What is the risk if we do nothing?
+
+4. The Proposal Scope (The "Solution Focus"
+What specific aspect or area is the project addressing?
+
+
+Optimize Educator Time for High-Value Tasks: IMATS automates tedious, repetitive tasks such as routine grading, misconception identification, and 24/7 student support, freeing up educators to focus on mentorship, social-emotional learning, and facilitating complex, critical thinking discussions.
+
+
+Architecture: Intelligent Multi-Agent Tutoring System
+<img width="250" height="200" alt="image" src="https://github.com/user-attachments/assets/47ce1505-cff2-43a1-b541-30e4729a7aee" />
