@@ -1,12 +1,12 @@
-### Problem Statement -- the problem you're trying to solve, and why you think it's an important or interesting problem to solve
+The "Agent Education" project, typically realized as an Intelligent Multi-Agent Tutoring System (IMATS), is an advanced application of AI agents designed to solve the critical education challenge of providing personalized, scalable, and adaptive learning support to every student.
 
-### Why agents? -- Why are agents the right solution to this problem
+The core goal is to shift education from a static, one-size-fits-all model to a dynamic, individualized learning journey by leveraging specialized AI agents.
 
-### What you created -- What's the overall architecture? 
+🎯 Problem Solved
+The project addresses the fundamental limitations of traditional education and simple e-learning platforms:
 
-### Demo -- Show your solution 
+Lack of Personalization: Human teachers cannot realistically customize lessons for 30+ students simultaneously, leading to high-achievers being bored and struggling students being left behind.
 
-### The Build -- How you created it, what tools or technologies you used.
+Teacher Overburden: Educators spend too much time on repetitive tasks like routine grading and answering administrative questions, detracting from high-value mentorship and instructional design.
 
-### If I had more time, this is what I'd do
-
+Inconsistent Support: High-quality, real-time tutoring is expensive and inaccessible, creating an equity gap.
