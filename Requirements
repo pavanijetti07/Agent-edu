@@ -1,0 +1,28 @@
+A. Business Requirements
+These are high-level goals and objectives that drive the project. They define why the system is being built.
+
+Example: "Increase customer retention by 15% within the first year of product launch."
+
+B. User Requirements
+These describe the goals and tasks that users must be able to perform using the system. They define what the users need. They are often written as User Stories (e.g., "As a customer, I want to be able to reset my password so I can access my account").
+
+C. Solution Requirements
+These detail the characteristics the system must have to meet the Business and User needs. They are the core of the Software Requirements Specification (SRS) and are categorized into two main groups: Functional and Non-Functional.
+
+2. Core Solution Requirements (Functional vs. Non-Functional)
+I. Functional Requirements (FRs)
+These describe what the system must DO. They define the specific features, functions, and behaviors of the system.
+
+Definition: Specific actions the system must be able to perform.
+
+Focus: System capabilities and features.
+
+Wording: Often uses the word "shall" (e.g., "The system shall allow the user to log in using their email and password.")
+
+Examples:
+
+The system shall validate the user's password strength upon registration.
+
+The system shall generate a monthly sales report in CSV and PDF formats.
+
+The system shall send a verification email to a new user after registration.
