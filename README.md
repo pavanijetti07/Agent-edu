@@ -1,3 +1,4 @@
+<img width="1024" height="1024" alt="Gemini_Generated_Image_hp022shp022shp02" src="https://github.com/user-attachments/assets/5318d883-91cb-446b-b736-6a5403c1db53" />
 The "Agent Education" project, typically realized as an Intelligent Multi-Agent Tutoring System (IMATS), is an advanced application of AI agents designed to solve the critical education challenge of providing personalized, scalable, and adaptive learning support to every student.
 
 The core goal is to shift education from a static, one-size-fits-all model to a dynamic, individualized learning journey by leveraging specialized AI agents.
