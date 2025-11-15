@@ -1,0 +1,132 @@
+import json
+from typing import Dict, Any, Literal
+
+# --- 1. Tools / LLM Mockup ---
+
+# In a real application, this would be an API call to a service like Gemini or GPT-4o
+def LLM_Call(system_prompt: str, user_prompt: str) -> str:
+    """
+    Simulates a call to a Large Language Model (LLM).
+    The LLM's role and task are defined by the system_prompt.
+    """
+    print(f"\n[LLM Request - Role: {system_prompt[:50]}...]")
+    # For a real demo, we'd use a model. For this example, we return a canned response.
+    if "quiz" in system_prompt.lower():
+        return json.dumps({
+            "question": "What is the primary benefit of the Agent-based approach in education?",
+            "answer": "Scalability of personalization and adaptive support.",
+            "type": "quiz"
+        })
+    return f"The core concept of **AI Agents in Education** is providing real-time, personalized support and adaptive learning paths to students. Agents autonomously manage the lesson flow, acting as a one-on-one tutor."
+
+
+# --- 2. The Student Model (Memory/State) ---
+
+class StudentModel:
+    """Stores the student's current learning state and performance."""
+    def __init__(self, name: str, topic: str):
+        self.name = name
+        self.topic = topic
+        self.mastery_score = 0.4  # Initial score (e.g., 0.0 to 1.0)
+        self.next_action = "EXPLAIN" # Start with an explanation
+
+    def update_mastery(self, is_correct: bool):
+        """Adjusts the mastery score based on the quiz result."""
+        if is_correct:
+            self.mastery_score = min(1.0, self.mastery_score + 0.15)
+            print(f"✅ Correct! Mastery updated to {self.mastery_score:.2f}")
+        else:
+            self.mastery_score = max(0.0, self.mastery_score - 0.05)
+            print(f"❌ Incorrect. Mastery updated to {self.mastery_score:.2f}")
+
+    def decide_next_action(self) -> Literal["EXPLAIN", "QUIZ", "DONE"]:
+        """The 'Planning' function based on the current state."""
+        if self.mastery_score >= 0.85:
+            return "DONE"
+        elif self.mastery_score < 0.5:
+            return "EXPLAIN" # Still needs more core concept explanation
+        else:
+            return "QUIZ" # Ready to test their knowledge
+
+# --- 3. The Pedagogical Agent (The Core Logic) ---
+
+class PedagogicalAgent:
+    """The central agent that guides the student's learning process."""
+    def __init__(self, student_model: StudentModel):
+        self.model = student_model
+        
+    def run_step(self, user_input: str = None):
+        """One step in the Sense-Plan-Act loop."""
+        
+        # 1. Sense / Plan
+        action = self.model.decide_next_action()
+        print(f"\n--- Agent Decides: {action} (Mastery: {self.model.mastery_score:.2f}) ---")
+        
+        if action == "DONE":
+            print(f"🎉 Congratulations, {self.model.name}! You have mastered the topic: {self.model.topic}!")
+            return False
+
+        # 2. Act
+        if action == "EXPLAIN":
+            self._execute_explanation()
+        elif action == "QUIZ":
+            self._execute_quiz(user_input)
+
+        return True # Continue learning
+
+    def _execute_explanation(self):
+        """The agent executes an explanation phase."""
+        system_prompt = (
+            f"You are a patient and encouraging tutor. Explain the core concept of "
+            f"'{self.model.topic}' in simple terms, using one clear analogy. "
+            f"End with a question to check for basic comprehension."
+        )
+        response = LLM_Call(system_prompt, f"Explain {self.model.topic}.")
+        print("\n**[Tutor Explanation]**")
+        print(response)
+
+    def _execute_quiz(self, user_input: str):
+        """The agent executes a quiz phase and updates the student model."""
+        system_prompt = (
+            f"You are an assessment agent. Generate a multiple-choice quiz question "
+            f"about '{self.model.topic}'. Provide the question and correct answer in a JSON format."
+        )
+        
+        # In a real system, the LLM would generate the quiz; here we use the mock
+        quiz_json_str = LLM_Call(system_prompt, f"Generate a quiz on {self.model.topic}.")
+        
+        try:
+            quiz_data = json.loads(quiz_json_str)
+            
+            # --- Quiz Interaction (Simulated) ---
+            print("\n**[Assessment Quiz]**")
+            print(f"Q: {quiz_data['question']}")
+            
+            # Simulate a student's answer based on a simple condition
+            # This is where the actual user input would be processed
+            simulated_correctness = (self.model.mastery_score > 0.6) 
+
+            if simulated_correctness:
+                self.model.update_mastery(True)
+                print(f"🤖 Agent Feedback: That's spot on! The answer is: {quiz_data['answer']}")
+            else:
+                self.model.update_mastery(False)
+                print("🤖 Agent Feedback: Not quite. Let's review the core benefit again before the next question.")
+
+# --- 4. Execution ---
+
+if __name__ == "__main__":
+    student = StudentModel(name="Alex", topic="AI Agents in Education")
+    agent = PedagogicalAgent(student)
+    
+    print(f"Starting Session for {student.name} on {student.topic}...")
+    
+    steps = 0
+    max_steps = 7 # Prevent infinite loop in this simplified demo
+
+    while agent.run_step() and steps < max_steps:
+        # Simulate waiting for user input before the next step
+        input("\n[Press Enter to continue the personalized lesson]...") 
+        steps += 1
+    
+    print("\n--- Session Complete ---")
