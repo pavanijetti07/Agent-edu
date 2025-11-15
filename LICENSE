@@ -1,0 +1,9 @@
+This is the most common context when discussing technology. A software license defines the rights granted to an end-user for using software.
+
+Key Types of Software Licenses:
+Type,Description,Key Feature
+Proprietary/Commercial,"The software owner retains all rights. You purchase the right to use the software, but you cannot modify, share, or redistribute it (e.g., Microsoft Office, Adobe Photoshop).",Closed Source. Restricts modification and distribution.
+Open Source,"Grants users the right to use, study, change, and distribute the software and its source code to anyone and for any purpose.",Open Source. Encourages collaboration and sharing.
+GNU General Public License (GPL),"A popular Open Source license. It is ""copyleft,"" meaning any derivative work must also be released under the GPL, forcing the open-sourcing of derivative products.",Copyleft. Strong requirements for sharing derivatives.
+MIT License,"A very permissive Open Source license. It allows users to do almost anything with the code, provided the original copyright notice and license are included. Derivative works do not have to be open source.",Permissive. Minimal restrictions.
+Creative Commons (CC),"Used for creative works (photos, videos, writing). Allows creators to specify which rights they reserve and which they waive (e.g., allow non-commercial use only).",Used for creative content. Variable permissions.
